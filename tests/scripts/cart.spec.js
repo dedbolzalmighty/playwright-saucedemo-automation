@@ -26,7 +26,7 @@ test.describe('Product Cart Funtionality', () =>{
              await loginPage.enterPassword('secret_sauce')
              await loginPage.clickLogin()
          
-             //assertion
+             //Asssertion: Verify if the user is on the product page
              await loginPage.pageLanding()
     
     
@@ -58,6 +58,48 @@ test.describe('Product Cart Funtionality', () =>{
             } else {
                 console.log('Product details do not match between the product page and cart page');
             }
+
+
+
+        })
+        test.only('Cart Checkout',async({page})=>{
+
+            //Pre-Condition: There's a product in the cart
+            // Step 1: Add the product to the cart
+            await productsPage.addProductToCart(productName);
+        
+            // Step 2: Verify that the cart contains the product (expect cart count to be '1')
+            const isCartVerified = await productsPage.verifyCartCount(1); // Verify that the cart has 1 item
+            expect(isCartVerified).toBe(true); // Assert that the cart verification is true
+
+            //Initialize Cart Page
+            cartPage = new CartPage(page)
+
+            //Step 3: Go to Cart Page
+            cartPage.cartPageLanding()
+
+            //Step 4: Proceed to Checkout
+            cartPage.cartCheckout()
+
+            //Assertion: Verify if the user is on the information page
+            await cartPage.cartInfoPage()
+
+            //Step 5: Fill in the information form
+            await cartPage.fillInfoPage('John','Doe','12345')
+
+            //Step 6: Continue to Checkout
+            await cartPage.continueCheckout()
+
+            //Assertion: Verify if the user is on the overview page
+            await cartPage.cartOverViewPage()
+
+            //Step 7: Finish Checkout\
+            await cartPage.finishCheckout()
+
+
+            
+
+
 
         })
 
