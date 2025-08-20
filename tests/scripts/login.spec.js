@@ -1,7 +1,7 @@
 import { test,expect } from '@playwright/test'
 import { LoginPage } from '../../pages/login.page'
 
-test('Login test - valid', async({page}) => {
+test.only('Login test - valid', async({page}) => {
 
     //Creating an instange of LoginPage
     const Login = new LoginPage(page)
@@ -19,6 +19,9 @@ test('Login test - valid', async({page}) => {
 
     await page.pause()
 
+
+
+
 })
 
 test('Login test - invalid', async({page}) => {
@@ -35,6 +38,8 @@ test('Login test - invalid', async({page}) => {
 
     //assertion
     await Login.errorMessage()
+
+    await page.pause()
 })
 
 

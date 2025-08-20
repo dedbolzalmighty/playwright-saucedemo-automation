@@ -29,7 +29,7 @@ test.describe('Product Cart Funtionality', () =>{
 
     })
 
-    test('Add product on cart', async({page}) =>{
+    test.only('Add product on cart', async({page}) =>{
 
         // Wait for page to load after login
         await page.waitForSelector('.inventory_list'); // Wait until the products are visible
@@ -43,6 +43,8 @@ test.describe('Product Cart Funtionality', () =>{
         // Step 5: Verify that the cart contains the product (expect cart count to be '1')
         const isCartVerified = await productsPage.verifyCartCount(1); // Verify that the cart has 1 item
         expect(isCartVerified).toBe(true); // Assert that the cart verification is true
+
+         await page.pause()
 
         
         
