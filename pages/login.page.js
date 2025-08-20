@@ -32,6 +32,9 @@ exports.LoginPage = class LoginPage {
     {
         await this.page.goto('https://www.saucedemo.com/')
     }
+
+
+    
     async pageLanding()
     {
         await expect(this.page).toHaveTitle(this.page_title);
