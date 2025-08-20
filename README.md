@@ -59,7 +59,3 @@ Resources & References
 Playwright Documentation
 POM design pattern guidelines
 GitHub Actions setup for Playwright
-
-Detailed test case descriptions
-
-Folder-level diagrams or architecture overview
