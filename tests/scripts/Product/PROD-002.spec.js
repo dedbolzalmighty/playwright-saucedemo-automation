@@ -1,6 +1,10 @@
+/*
+Run : npx playwright test PROD-002.spec.js --headed --project=chromium
+*/
+
 import { test, expect } from '@playwright/test'
-import { LoginPage } from '../../pages/login.page'
-import { ProductsPage } from '../../pages/products.page'
+import { LoginPage } from '../../../pages/login.page'
+import { ProductsPage } from '../../../pages/products.page'
 
 test.describe('Product Cart Funtionality', () =>{
 
@@ -29,27 +33,6 @@ test.describe('Product Cart Funtionality', () =>{
 
     })
 
-    test.only('Add product on cart', async({page}) =>{
-
-        // Wait for page to load after login
-        await page.waitForSelector('.inventory_list'); // Wait until the products are visible
-    
-        // Step 3: Define the product name you want to add to the cart
-        const productName = 'Sauce Labs Backpack'; // You can replace this with any valid product name on the site
-      
-        // Step 4: Add the product to the cart
-        await productsPage.addProductToCart(productName);
-        
-        // Step 5: Verify that the cart contains the product (expect cart count to be '1')
-        const isCartVerified = await productsPage.verifyCartCount(1); // Verify that the cart has 1 item
-        expect(isCartVerified).toBe(true); // Assert that the cart verification is true
-
-         await page.pause()
-
-        
-        
-    
-    })
     test('Remove product on cart', async({page}) =>{
     
         // Wait for page to load after login
@@ -67,10 +50,7 @@ test.describe('Product Cart Funtionality', () =>{
         const isCartVerified = await productsPage.verifyCartCount(0); // Verify that the cart has 1 item
         expect(isCartVerified).toBe(true); // Assert that the cart verification is true
 
-     
-    
-        
-       
+
         
     
     })
